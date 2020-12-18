@@ -1,7 +1,23 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <iostream>
+
+void show_sentence(char sentence[][14], int len);
+void delete_sentence(char sentence[][14], int len);
+void show_sentence_from_last_elem(char sentence[][14], int len);
+void check_elem_sign(char* word, int len_word);
+void check_elem_letter(char* word, int len_word);
+void check_first_letters(char sentence[][14], int len);
+int fill_string(char sentence[][14]);
+int fill_string_from_file(char sentence[][14]);
+void linear_search(char sentence[][14], int len, std::string x);
+int find_index(char letter, std::string x);
+int find_len(char word[]);
+bool boyer_mur_word(char word[], int i, std::string x);
+void boyer_mur(char sentence[][14], int len, std::string x);
+int forth_main();
+
+
 
 void show_sentence(char sentence[][14], int len)
 {
@@ -52,7 +68,7 @@ void check_elem_sign(char* word, int len_word)
     int i = 0;
     while (word[i] != NULL)
     {
-        if (!(((((int)(word[i]) > 64) and (int)(word[i]) < 91)) or (((int)(word[i]) > 96) and ((int)(word[i]) < 123))) or (((int)(word[i]) > 47) and ((int)(word[i]) < 58)))) cnt += 1;
+        if (!(((((int)(word[i]) > 64) and (int)(word[i]) < 91)) or (((int)(word[i]) > 96) and ((int)(word[i]) < 123))) or ((int)(word[i]) > 47 and (int)(word[i]) < 58)) cnt += 1;
         else cnt = 0;
         if ((cnt == 2 and word[i + 1] != '.') or (cnt > 3)) word[i] = NULL;
         i += 1;
@@ -229,9 +245,8 @@ void boyer_mur(char sentence[][14], int len, std::string x)
     else std::cout << "String you write wasn't in the main string\n";
 }
 
-int main()
+int forth_main()
 {
-    setlocale(LC_ALL, "Russian");
     std::cout << "Hi!\n";
     std::string x;
     char sentence[50][14];
