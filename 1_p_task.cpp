@@ -1,4 +1,4 @@
-﻿#include <fstream>
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <iostream>
@@ -52,7 +52,7 @@ void check_elem_sign(char* word, int len_word)
     int i = 0;
     while (word[i] != NULL)
     {
-        if (!(((((int)(word[i]) > 64) and (int)(word[i]) < 91)) or (((int)(word[i]) > 96) and ((int)(word[i]) < 123)))) cnt += 1;
+        if (!(((((int)(word[i]) > 64) and (int)(word[i]) < 91)) or (((int)(word[i]) > 96) and ((int)(word[i]) < 123))) or (((int)(word[i]) > 47) and ((int)(word[i]) < 58)))) cnt += 1;
         else cnt = 0;
         if ((cnt == 2 and word[i + 1] != '.') or (cnt > 3)) word[i] = NULL;
         i += 1;
@@ -143,7 +143,7 @@ int fill_string_from_file(char sentence[][14])
         }
         fin.close();
     }
-    else 
+    else
     {
         std::cout << "\nWas file fin.txt opened?\n";
     }
